@@ -21,13 +21,9 @@ DOMAINS = [
         "api_key": os.getenv("CENTRICITY_TEST_STORE_API_KEY")},
     {"subdomain": "dummy-store-1",
         "api_key": os.getenv("DUMMY_STORE_1_API_KEY")},
-    {"subdomain": "dummy-store-2",
-        "api_key": os.getenv("DUMMY_STORE_2_API_KEY")},
-    {"subdomain": "dummy-store-3",
-        "api_key": os.getenv("DUMMY_STORE_3_API_KEY")},
 ]
 API_PATH = "/api/v2.6.1/orders"
-CHECK_INTERVAL = 60  # 2 hours in seconds
+CHECK_INTERVAL = 60 * 60 * 2  # 2 hours in seconds
 
 
 def log_and_print(message, level="info"):
@@ -116,14 +112,10 @@ def process_orders(subdomain, api_key):
 
 
 def main():
-    """Main loop to process orders for all domains."""
-    while True:
-        for domain in DOMAINS:
-            log_and_print(f"Processing orders for {domain['subdomain']}...")
-            process_orders(domain["subdomain"], domain["api_key"])
-        log_and_print(
-            f"Waiting for {CHECK_INTERVAL} seconds before the next check...")
-        time.sleep(CHECK_INTERVAL)
+    """Process orders for all domains."""
+    for domain in DOMAINS:
+        log_and_print(f"Processing orders for {domain['subdomain']}...")
+        process_orders(domain["subdomain"], domain["api_key"])
 
 
 if __name__ == "__main__":
