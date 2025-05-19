@@ -19,8 +19,8 @@ logging.basicConfig(
 DOMAINS = [
     {"subdomain": "centricity-test-store",
         "api_key": os.getenv("CENTRICITY_TEST_STORE_API_KEY")},
-    {"subdomain": "dummy-store-1",
-        "api_key": os.getenv("DUMMY_STORE_1_API_KEY")},
+    {"subdomain": "bonappetit",
+        "api_key": os.getenv("BON_APPETIT_API_KEY")},
 ]
 API_PATH = "/api/v2.6.1/orders"
 CHECK_INTERVAL = 60 * 60 * 2  # 2 hours in seconds
