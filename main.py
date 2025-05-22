@@ -21,6 +21,8 @@ DOMAINS = [
         "api_key": os.getenv("CENTRICITY_TEST_STORE_API_KEY")},
     {"subdomain": "bonappetit",
         "api_key": os.getenv("BON_APPETIT_API_KEY")},
+    {"subdomain": "amentuminventory",
+        "api_key": os.getenv("AMENTUM_INVENTORY_API_KEY")},
 ]
 API_PATH = "/api/v2.6.1/orders"
 CHECK_INTERVAL = 60 * 60 * 2  # 2 hours in seconds
