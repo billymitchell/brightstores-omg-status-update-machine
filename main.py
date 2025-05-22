@@ -98,8 +98,10 @@ def process_orders(subdomain, api_key):
         log_and_print(f"Processing order {order_id} with status '{status}'...")
 
         try:
+            # Replace 'Z' with '+00:00' for ISO 8601 compatibility
+            created_at_clean = created_at.replace('Z', '+00:00')
             created_at_dt = datetime.fromisoformat(
-                created_at).astimezone(timezone.utc).replace(tzinfo=None)
+                created_at_clean).astimezone(timezone.utc).replace(tzinfo=None)
 
             if status == "new" and (now - created_at_dt) <= timedelta(hours=2):
                 log_and_print(
